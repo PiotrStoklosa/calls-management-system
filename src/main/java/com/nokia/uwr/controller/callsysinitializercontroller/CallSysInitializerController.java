@@ -22,15 +22,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CallSysInitializerController {
 
-    private final CallSysInitializer callSysInitializer;
     private static final Logger LOGGER = LogManager.getLogger(CallSysInitializerController.class);
+    private final CallSysInitializer callSysInitializer;
 
     /**
      * @param btsList list of BTS's to initialize assignments from.
      */
     @PostMapping
     public void initialize(@RequestBody List<BTS> btsList) throws EmptyBTSListException {
-        LOGGER.info("Got request to initialize");
+        LOGGER.info("Got request to initialize from btsList: " + btsList);
 
         if (btsList.isEmpty()) throw new EmptyBTSListException("BTS List is Empty");
 

@@ -12,11 +12,11 @@ import java.util.Map;
 @Service
 public class ConnectionManagerImpl implements ConnectionManager {
 
-    private Map<BTS, List<UEMeasurement>> assignments;
     private static final Logger LOGGER = LogManager.getLogger(ConnectionManagerImpl.class);
+    private Map<BTS, List<UEMeasurement>> assignments;
 
     public void setAssignments(Map<BTS, List<UEMeasurement>> assignments) {
-        LOGGER.info("Set assignments");
+        LOGGER.info("Set assignments: " + assignments);
 
         this.assignments = assignments;
 

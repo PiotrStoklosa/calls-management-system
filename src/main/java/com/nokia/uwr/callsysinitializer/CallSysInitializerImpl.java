@@ -17,12 +17,12 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CallSysInitializerImpl implements CallSysInitializer {
 
-    private final ConnectionManager connectionManager;
     private static final Logger LOGGER = LogManager.getLogger(CallSysInitializerImpl.class);
+    private final ConnectionManager connectionManager;
 
     @Override
     public void initializeAssignments(List<BTS> btsList) {
-        LOGGER.info("Create assignments map");
+        LOGGER.info("Create assignments map from btsList: " + btsList);
 
         Map<BTS, List<UEMeasurement>> assignments = btsList.stream()
                 .map(bts -> Map.entry(bts, new ArrayList<UEMeasurement>()))
