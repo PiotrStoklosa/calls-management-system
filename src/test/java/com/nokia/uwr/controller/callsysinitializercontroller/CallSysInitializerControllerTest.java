@@ -1,35 +1,57 @@
 package com.nokia.uwr.controller.callsysinitializercontroller;
 
-import com.nokia.uwr.model.BTS;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.ArrayList;
-import java.util.List;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
+@AutoConfigureMockMvc
 @SpringBootTest
 class CallSysInitializerControllerTest {
 
+    private static final String emptyBtsList = "";
+    private static final String oneElementBtsList = """
+            {
+            "name": "BTS1",
+            "signalPower": 30
+            }""";
+    private static final String postUrl = "/api/initializer";
+
     @Autowired
-    private CallSysInitializerController controller;
+    private MockMvc restBTSMockMvc;
 
     @Test
-    public void shouldThrowEmptyBTSListExceptionWhileGivenBTSListIsEmpty() {
-        // given
-        List<BTS> btsList = new ArrayList<>();
-
-        // then
-        assertThrows(EmptyBTSListException.class, () -> controller.initialize(btsList));
+    public void shouldThrowEmptyBTSListExceptionWhileGivenBTSListIsEmpty() throws Exception {
+        restBTSMockMvc
+                .perform(post(postUrl)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(String.format("""
+                                        [
+                                        %s
+                                        ]
+                                        """,
+                                emptyBtsList)
+                        ))
+                .andExpect(status().isNotAcceptable());
     }
 
     @Test
-    public void shouldNotThrowExceptionWhileGivenBTSListIsEmpty() {
-        List<BTS> btsList = new ArrayList<>(List.of(new BTS("BTS1", 30)));
-
-        assertDoesNotThrow(() -> controller.initialize(btsList));
+    public void shouldNotThrowExceptionWhileGivenBTSListIsNotEmpty() throws Exception {
+        restBTSMockMvc
+                .perform(post(postUrl)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(String.format("""
+                                        [
+                                        %s
+                                        ]
+                                        """,
+                                oneElementBtsList)
+                        ))
+                .andExpect(status().isCreated());
     }
 }

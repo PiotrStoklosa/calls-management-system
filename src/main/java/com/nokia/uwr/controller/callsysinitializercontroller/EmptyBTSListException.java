@@ -1,7 +1,7 @@
 package com.nokia.uwr.controller.callsysinitializercontroller;
 
-public class EmptyBTSListException extends Exception {
+public class EmptyBTSListException extends RuntimeException {
     public EmptyBTSListException(String errorMessage) {
-        super(errorMessage);
+        super("BTS List is Empty: " + errorMessage);
     }
 }
