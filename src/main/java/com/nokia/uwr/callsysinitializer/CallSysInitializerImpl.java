@@ -21,8 +21,10 @@ public class CallSysInitializerImpl implements CallSysInitializer {
     private final ConnectionManager connectionManager;
 
     @Override
-    public void initializeAssignments(List<BTS> btsList) {
+    public void initializeAssignments(List<BTS> btsList) throws EmptyBTSListException {
         LOGGER.info("Create assignments map from btsList: " + btsList);
+
+        if (btsList.isEmpty()) throw new EmptyBTSListException(btsList);
 
         Map<BTS, List<UEMeasurement>> assignments = btsList.stream()
                 .map(bts -> Map.entry(bts, new ArrayList<UEMeasurement>()))

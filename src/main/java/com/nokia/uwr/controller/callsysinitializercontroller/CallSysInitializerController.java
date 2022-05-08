@@ -1,6 +1,7 @@
 package com.nokia.uwr.controller.callsysinitializercontroller;
 
 import com.nokia.uwr.callsysinitializer.CallSysInitializer;
+import com.nokia.uwr.callsysinitializer.EmptyBTSListException;
 import com.nokia.uwr.model.BTS;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -28,12 +29,12 @@ public class CallSysInitializerController {
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void initialize(@RequestBody List<BTS> btsList) throws EmptyBTSListException {
+    public void initialize(@RequestBody List<BTS> btsList) {
         LOGGER.info("Got request to initialize from btsList: " + btsList);
 
-        if (btsList.isEmpty()) throw new EmptyBTSListException(btsList.toString());
-
         callSysInitializer.initializeAssignments(btsList);
+
+        LOGGER.info("Initialized correctly");
     }
 
 }
