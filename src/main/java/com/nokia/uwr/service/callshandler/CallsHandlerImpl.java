@@ -20,8 +20,11 @@ public class CallsHandlerImpl implements CallsHandler {
     private final AssignmentsAlgorithm assignmentsAlgorithm;
 
     @Override
-    public void startCall(Measurements measurements) {
+    public void startCall(Measurements measurements) throws EmptyMeasurementsMapException {
         LOGGER.info("Start call for UE: " + measurements.name());
+
+        if (measurements.signals().isEmpty())
+            throw new EmptyMeasurementsMapException(measurements.name());
 
         BTS connectToBts = assignmentsAlgorithm.findBTS(measurements);
 

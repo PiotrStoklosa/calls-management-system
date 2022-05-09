@@ -19,7 +19,11 @@ public class ConnectionManagerImpl implements ConnectionManager {
 
     @Override
     public void assignUE(BTS bts, UEMeasurement ueMeasurement) {
+        LOGGER.info("Assign UE: " + ueMeasurement.name() + " to BTS: " + bts.name());
+
         assignments.get(bts).add(ueMeasurement);
+
+        LOGGER.info("Assigned UE successfully");
     }
 
     public void setAssignments(Map<BTS, List<UEMeasurement>> assignments) {
