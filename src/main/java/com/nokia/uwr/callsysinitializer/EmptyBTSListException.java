@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 
-@ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+@ResponseStatus(HttpStatus.NO_CONTENT)
 public class EmptyBTSListException extends RuntimeException {
     public EmptyBTSListException(List<BTS> btsList) {
         super("BTS List is Empty: " + btsList);

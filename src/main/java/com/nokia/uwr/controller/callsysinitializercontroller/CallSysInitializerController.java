@@ -28,7 +28,6 @@ public class CallSysInitializerController {
      * @param btsList list of BTS's to initialize assignments from.
      */
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public void initialize(@RequestBody List<BTS> btsList) {
         LOGGER.info("Got request to initialize from btsList: " + btsList);
 

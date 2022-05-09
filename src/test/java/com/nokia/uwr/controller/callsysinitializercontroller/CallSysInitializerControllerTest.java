@@ -37,7 +37,7 @@ class CallSysInitializerControllerTest {
                                         """,
                                 emptyBtsList)
                         ))
-                .andExpect(status().isNotAcceptable());
+                .andExpect(status().isNoContent());
     }
 
     @Test
@@ -52,6 +52,6 @@ class CallSysInitializerControllerTest {
                                         """,
                                 oneElementBtsList)
                         ))
-                .andExpect(status().isCreated());
+                .andExpect(status().isOk());
     }
 }
