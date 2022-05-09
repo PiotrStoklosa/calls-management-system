@@ -1,6 +1,7 @@
 package com.nokia.uwr.connectionmanager;
 
 import com.nokia.uwr.model.BTS;
+import com.nokia.uwr.model.Measurements;
 import com.nokia.uwr.model.UEMeasurement;
 
 import java.util.List;
@@ -12,6 +13,14 @@ import java.util.Map;
  * @author MiSobecki
  */
 public interface ConnectionManager {
+
+    /**
+     * Assigns UE to given BTS.
+     *
+     * @param bts BTS to assign UE to.
+     * @param ueMeasurement UE to be assigned with its measured signal power to given BTS.
+     */
+    void assignUE(BTS bts, UEMeasurement ueMeasurement);
 
     /**
      * Setter for assignments.
