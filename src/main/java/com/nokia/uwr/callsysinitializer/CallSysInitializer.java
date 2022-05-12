@@ -1,5 +1,6 @@
 package com.nokia.uwr.callsysinitializer;
 
+import com.nokia.uwr.connectionmanager.ConnectionManager;
 import com.nokia.uwr.model.BTS;
 
 import java.util.List;
@@ -16,6 +17,6 @@ public interface CallSysInitializer {
      *
      * @param btsList list of BTS's.
      */
-    void initializeAssignments(List<BTS> btsList);
+    ConnectionManager initializeAssignments(List<BTS> btsList);
 
 }

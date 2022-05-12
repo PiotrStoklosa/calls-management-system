@@ -1,8 +1,11 @@
 package com.nokia.uwr.callsysinitializer;
 
+import com.nokia.uwr.callsysinitializer.assignmentsmap.AssignmentsMapFactory;
 import com.nokia.uwr.connectionmanager.ConnectionManager;
+import com.nokia.uwr.connectionmanager.ConnectionManagerImpl;
 import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.UEMeasurement;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,14 +16,21 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
 
-@SpringBootTest
 class CallSysInitializerImplTest {
 
-    @Autowired
-    private CallSysInitializer callSysInitializer;
-    @Autowired
     private ConnectionManager connectionManager;
+    private AssignmentsMapFactory assignmentsMapFactory;
+    private CallSysInitializer callSysInitializer;
+
+    @BeforeEach
+    public void setup() {
+        connectionManager = mock(ConnectionManager.class);
+        assignmentsMapFactory = mock(AssignmentsMapFactory.class);
+        callSysInitializer = spy(new CallSysInitializerImpl(connectionManager, assignmentsMapFactory));
+    }
 
     @Test
     public void shouldInitializeAssignmentsMapAndSetInConnectionManager() {
@@ -38,13 +48,14 @@ class CallSysInitializerImplTest {
                         Map.entry(bts2, new ArrayList<>())
                 ));
 
-        // when
-        callSysInitializer.initializeAssignments(btsList);
+        given(assignmentsMapFactory.createAssignmentsMap(btsList)).willReturn(givenAssignments);
 
-        Map<BTS, List<UEMeasurement>> resultAssignments = connectionManager.getAssignments();
+        // when
+        ConnectionManager result = callSysInitializer.initializeAssignments(btsList);
 
         // then
-        assertEquals(givenAssignments, resultAssignments);
+        verify(assignmentsMapFactory).createAssignmentsMap(btsList);
+        verify(connectionManager).setAssignments(givenAssignments);
     }
 
 }
