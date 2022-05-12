@@ -1,12 +1,10 @@
 package com.nokia.uwr.controller.callsysinitializercontroller;
 
-import com.nokia.uwr.callsysinitializer.CallSysInitializer;
-import com.nokia.uwr.callsysinitializer.EmptyBTSListException;
+import com.nokia.uwr.service.callsysinitializer.CallSysInitializer;
 import com.nokia.uwr.model.BTS;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

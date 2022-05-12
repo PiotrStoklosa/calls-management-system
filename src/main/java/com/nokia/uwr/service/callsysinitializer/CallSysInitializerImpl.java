@@ -1,6 +1,6 @@
-package com.nokia.uwr.callsysinitializer;
+package com.nokia.uwr.service.callsysinitializer;
 
-import com.nokia.uwr.callsysinitializer.assignmentsmap.AssignmentsMapFactory;
+import com.nokia.uwr.service.callsysinitializer.assignmentsmap.AssignmentsMapFactory;
 import com.nokia.uwr.connectionmanager.ConnectionManager;
 import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.UEMeasurement;
@@ -9,10 +9,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

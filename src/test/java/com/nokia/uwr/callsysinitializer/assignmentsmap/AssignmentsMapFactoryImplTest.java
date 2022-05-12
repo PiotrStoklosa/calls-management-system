@@ -2,6 +2,8 @@ package com.nokia.uwr.callsysinitializer.assignmentsmap;
 
 import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.UEMeasurement;
+import com.nokia.uwr.service.callsysinitializer.assignmentsmap.AssignmentsMapFactory;
+import com.nokia.uwr.service.callsysinitializer.assignmentsmap.AssignmentsMapFactoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

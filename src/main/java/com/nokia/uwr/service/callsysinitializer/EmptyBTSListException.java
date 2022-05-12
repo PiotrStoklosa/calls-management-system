@@ -1,4 +1,4 @@
-package com.nokia.uwr.callsysinitializer;
+package com.nokia.uwr.service.callsysinitializer;
 
 import com.nokia.uwr.model.BTS;
 import org.springframework.http.HttpStatus;

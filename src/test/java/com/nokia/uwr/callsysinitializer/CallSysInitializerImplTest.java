@@ -1,6 +1,9 @@
 package com.nokia.uwr.callsysinitializer;
 
-import com.nokia.uwr.callsysinitializer.assignmentsmap.AssignmentsMapFactory;
+import com.nokia.uwr.service.callsysinitializer.CallSysInitializer;
+import com.nokia.uwr.service.callsysinitializer.CallSysInitializerImpl;
+import com.nokia.uwr.service.callsysinitializer.EmptyBTSListException;
+import com.nokia.uwr.service.callsysinitializer.assignmentsmap.AssignmentsMapFactory;
 import com.nokia.uwr.connectionmanager.ConnectionManager;
 import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.UEMeasurement;

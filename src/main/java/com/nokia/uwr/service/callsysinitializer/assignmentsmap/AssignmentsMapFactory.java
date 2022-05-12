@@ -1,4 +1,4 @@
-package com.nokia.uwr.callsysinitializer.assignmentsmap;
+package com.nokia.uwr.service.callsysinitializer.assignmentsmap;
 
 import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.UEMeasurement;
