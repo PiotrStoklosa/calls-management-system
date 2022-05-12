@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BestSignalPowerAssignmentsAlgorithmTest {
 
@@ -20,7 +20,7 @@ class BestSignalPowerAssignmentsAlgorithmTest {
     }
 
     @Test
-    public void shouldReturnBtsWithBestSignalPower() {
+    public void shouldReturnBtsWithBestMeasuredSignalPower() {
         // given
         Measurements measurements = new Measurements(
                 "UE1",

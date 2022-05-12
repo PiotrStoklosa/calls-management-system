@@ -23,7 +23,7 @@ public class CallSysInitializerImpl implements CallSysInitializer {
     private final AssignmentsMapFactory assignmentsMapFactory;
 
     @Override
-    public ConnectionManager initializeAssignments(List<BTS> btsList) throws EmptyBTSListException {
+    public ConnectionManager initializeAssignments(List<BTS> btsList) {
         LOGGER.info("Create and set assignments map from btsList: " + btsList);
 
         if (btsList.isEmpty()) throw new EmptyBTSListException(btsList);

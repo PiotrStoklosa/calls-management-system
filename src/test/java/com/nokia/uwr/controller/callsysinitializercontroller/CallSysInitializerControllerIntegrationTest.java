@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 @SpringBootTest
-class CallSysInitializerControllerTest {
+class CallSysInitializerControllerIntegrationTest {
 
     private static final String emptyBtsList = "";
     private static final String oneElementBtsList = """

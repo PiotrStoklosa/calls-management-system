@@ -20,7 +20,7 @@ public class CallsHandlerImpl implements CallsHandler {
     private final AssignmentsAlgorithm assignmentsAlgorithm;
 
     @Override
-    public void startCall(Measurements measurements) throws EmptyMeasurementsMapException {
+    public void startCall(Measurements measurements) {
         LOGGER.info("Start call for UE: " + measurements.name());
 
         if (measurements.signals().isEmpty())
