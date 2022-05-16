@@ -1,6 +1,5 @@
 package com.nokia.uwr.assigntmentsalgorithm;
 
-import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.Measurements;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,7 +17,11 @@ public class BestSignalPowerAssignmentsAlgorithm implements AssignmentsAlgorithm
     public String findBTS(Measurements measurements) {
         LOGGER.info("Find BTS with best signal power to connect to from UE: " + measurements.name());
 
-        return Collections.max(measurements.signals().entrySet(), Map.Entry.comparingByValue()).getKey();
+        String bestBTS = Collections.max(measurements.signals().entrySet(), Map.Entry.comparingByValue()).getKey();
+
+        LOGGER.info("Found best BTS:" + bestBTS);
+
+        return bestBTS;
     }
 
 }

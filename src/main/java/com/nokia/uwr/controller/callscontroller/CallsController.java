@@ -23,6 +23,8 @@ public class CallsController {
     private final CallsHandler callsHandler;
 
     /**
+     * Starts call for given UE.
+     *
      * @param measurements measured signal powers from BTS's for given UE.
      */
     @PostMapping("/start")

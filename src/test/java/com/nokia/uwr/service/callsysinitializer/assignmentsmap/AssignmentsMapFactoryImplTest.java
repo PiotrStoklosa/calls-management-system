@@ -2,8 +2,6 @@ package com.nokia.uwr.service.callsysinitializer.assignmentsmap;
 
 import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.UEMeasurement;
-import com.nokia.uwr.service.callsysinitializer.assignmentsmap.AssignmentsMapFactory;
-import com.nokia.uwr.service.callsysinitializer.assignmentsmap.AssignmentsMapFactoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AssignmentsMapFactoryImplTest {
 

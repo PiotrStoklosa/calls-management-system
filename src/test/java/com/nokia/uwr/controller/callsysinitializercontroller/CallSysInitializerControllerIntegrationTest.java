@@ -14,13 +14,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 class CallSysInitializerControllerIntegrationTest {
 
-    private static final String emptyBtsList = "";
-    private static final String oneElementBtsList = """
+    private static final String EMPTY_BTS_LIST = "";
+    private static final String ONE_ELEMENT_BTS_LIST = """
             {
             "name": "BTS1",
             "signalPower": 30
             }""";
-    private static final String postUrl = "/api/initializer";
+    private static final String POST_URL = "/api/initializer";
 
     @Autowired
     private MockMvc restBTSMockMvc;
@@ -28,14 +28,14 @@ class CallSysInitializerControllerIntegrationTest {
     @Test
     public void shouldThrowEmptyBTSListExceptionWhileGivenBTSListIsEmpty() throws Exception {
         restBTSMockMvc
-                .perform(post(postUrl)
+                .perform(post(POST_URL)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(String.format("""
                                         [
                                         %s
                                         ]
                                         """,
-                                emptyBtsList)
+                                EMPTY_BTS_LIST)
                         ))
                 .andExpect(status().isNoContent());
     }
@@ -43,14 +43,14 @@ class CallSysInitializerControllerIntegrationTest {
     @Test
     public void shouldNotThrowExceptionWhileGivenBTSListIsNotEmpty() throws Exception {
         restBTSMockMvc
-                .perform(post(postUrl)
+                .perform(post(POST_URL)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(String.format("""
                                         [
                                         %s
                                         ]
                                         """,
-                                oneElementBtsList)
+                                ONE_ELEMENT_BTS_LIST)
                         ))
                 .andExpect(status().isOk());
     }

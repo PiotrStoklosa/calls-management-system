@@ -1,6 +1,5 @@
 package com.nokia.uwr.assigntmentsalgorithm;
 
-import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.Measurements;
 
 /**

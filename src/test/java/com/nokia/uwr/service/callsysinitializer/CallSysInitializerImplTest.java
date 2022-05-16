@@ -1,12 +1,9 @@
 package com.nokia.uwr.service.callsysinitializer;
 
-import com.nokia.uwr.service.callsysinitializer.CallSysInitializer;
-import com.nokia.uwr.service.callsysinitializer.CallSysInitializerImpl;
-import com.nokia.uwr.service.callsysinitializer.EmptyBTSListException;
-import com.nokia.uwr.service.callsysinitializer.assignmentsmap.AssignmentsMapFactory;
 import com.nokia.uwr.connectionmanager.ConnectionManager;
 import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.UEMeasurement;
+import com.nokia.uwr.service.callsysinitializer.assignmentsmap.AssignmentsMapFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

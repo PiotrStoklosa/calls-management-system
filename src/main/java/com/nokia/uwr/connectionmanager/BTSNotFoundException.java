@@ -1,12 +1,16 @@
 package com.nokia.uwr.connectionmanager;
 
-import com.nokia.uwr.model.BTS;
-import com.nokia.uwr.service.callsysinitializer.EmptyBTSListException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.List;
-
+/**
+ * Exception to be thrown when there is no BTS in assignments map with given name.
+ *
+ * @author MiSobecki
+ */
+@ResponseStatus(HttpStatus.NOT_FOUND)
 public class BTSNotFoundException extends RuntimeException {
     private static final Logger LOGGER = LogManager.getLogger(BTSNotFoundException.class);
 

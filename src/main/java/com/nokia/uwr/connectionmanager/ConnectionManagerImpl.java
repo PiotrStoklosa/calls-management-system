@@ -40,10 +40,16 @@ public class ConnectionManagerImpl implements ConnectionManager {
 
     @Override
     public BTS getBTSByName(String name) {
-        return assignments.entrySet().stream()
+        LOGGER.info("Search for BTS with given name: " + name);
+
+        BTS foundBTS = assignments.entrySet().stream()
                 .filter(x -> x.getKey().name().equals(name))
                 .findFirst()
                 .orElseThrow(() -> new BTSNotFoundException(name))
                 .getKey();
+
+        LOGGER.info("Found BTS");
+
+        return foundBTS;
     }
 }
