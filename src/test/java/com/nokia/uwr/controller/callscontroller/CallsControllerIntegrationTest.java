@@ -43,6 +43,15 @@ class CallsControllerIntegrationTest {
             "\"BTS3\":7," +
             "\"BTS4\":3}}";
 
+    private static final String EMPTY_MEASUREMENTS = "{\"name\":\"UE3\"," +
+            "\"signals\":{}}";
+
+    private static final String MEASUREMENT_WITH_NON_EXISTING_BEST_BTS = "{\"name\":\"UE3\"," +
+            "\"signals\":{\"BTS1\":1," +
+            "\"BTS2\":6," +
+            "\"ERROR\":7," +
+            "\"BTS4\":3}}";
+
     @Autowired
     private MockMvc restBTSMockMvc;
 
@@ -62,6 +71,40 @@ class CallsControllerIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(MEASUREMENTS))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("Call startCall method which should return NO_CONTENT response status " +
+            "while given measurements are empty and CallSys is initialized")
+    public void test2() throws Exception {
+        restBTSMockMvc
+                .perform(post(INITIALIZE_URL)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(BTS_LIST))
+                .andExpect(status().isOk());
+
+        restBTSMockMvc
+                .perform(post(START_CALL_URL)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(EMPTY_MEASUREMENTS))
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    @DisplayName("Call startCall method which should return NOT_FOUND response status " +
+            "while given measurements contain non existing best BTS name and CallSys is initialized")
+    public void test3() throws Exception {
+        restBTSMockMvc
+                .perform(post(INITIALIZE_URL)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(BTS_LIST))
+                .andExpect(status().isOk());
+
+        restBTSMockMvc
+                .perform(post(START_CALL_URL)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(MEASUREMENT_WITH_NON_EXISTING_BEST_BTS))
+                .andExpect(status().isNotFound());
     }
 
 }
