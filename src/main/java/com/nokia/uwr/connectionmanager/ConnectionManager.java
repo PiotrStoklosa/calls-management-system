@@ -34,4 +34,6 @@ public interface ConnectionManager {
      */
     Map<BTS, List<UEMeasurement>> getAssignments();
 
+    BTS getBTSByName(String name);
+
 }

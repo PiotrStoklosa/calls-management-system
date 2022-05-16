@@ -15,7 +15,7 @@ public class BestSignalPowerAssignmentsAlgorithm implements AssignmentsAlgorithm
     private static final Logger LOGGER = LogManager.getLogger(BestSignalPowerAssignmentsAlgorithm.class);
 
     @Override
-    public BTS findBTS(Measurements measurements) {
+    public String findBTS(Measurements measurements) {
         LOGGER.info("Find BTS with best signal power to connect to from UE: " + measurements.name());
 
         return Collections.max(measurements.signals().entrySet(), Map.Entry.comparingByValue()).getKey();

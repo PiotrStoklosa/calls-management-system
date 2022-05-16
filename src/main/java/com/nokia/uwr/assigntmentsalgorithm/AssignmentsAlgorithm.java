@@ -16,6 +16,6 @@ public interface AssignmentsAlgorithm {
      * @param measurements measured signals to BTS's from the UE.
      * @return BTS which UE should be connected to.
      */
-    BTS findBTS(Measurements measurements);
+    String findBTS(Measurements measurements);
 
 }

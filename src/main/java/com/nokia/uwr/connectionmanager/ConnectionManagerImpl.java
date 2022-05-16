@@ -37,4 +37,13 @@ public class ConnectionManagerImpl implements ConnectionManager {
     public Map<BTS, List<UEMeasurement>> getAssignments() {
         return assignments;
     }
+
+    @Override
+    public BTS getBTSByName(String name) {
+        return assignments.entrySet().stream()
+                .filter(x -> x.getKey().name().equals(name))
+                .findFirst()
+                .orElseThrow(() -> new BTSNotFoundException(name))
+                .getKey();
+    }
 }

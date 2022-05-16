@@ -32,17 +32,17 @@ class CallsHandlerImplTest {
 
         callsHandler = spy(new CallsHandlerImpl(connectionManager, assignmentsAlgorithm));
 
-        bestBts = new BTS("BTS5", 30);
+        bestBts = new BTS("BTS5", 70);
 
         measurements = new Measurements(
                 "UE1",
                 new HashMap<>(
                         Map.ofEntries(
-                                Map.entry(new BTS("BTS1", 50), 25),
-                                Map.entry(new BTS("BTS2", 60), 15),
-                                Map.entry(new BTS("BTS3", 10), 8),
-                                Map.entry(new BTS("BTS4", 20), 6),
-                                Map.entry(bestBts, 29)
+                                Map.entry("BTS1", 25),
+                                Map.entry("BTS2", 15),
+                                Map.entry("BTS3", 8),
+                                Map.entry("BTS4", 6),
+                                Map.entry(bestBts.name(), 29)
                         )));
     }
 
@@ -59,7 +59,8 @@ class CallsHandlerImplTest {
     public void shouldFindBestBtsToConnectToAndAssignUEToIt() {
         // given
         UEMeasurement ueMeasurement = new UEMeasurement("UE1", 29);
-        given(assignmentsAlgorithm.findBTS(measurements)).willReturn(bestBts);
+        given(assignmentsAlgorithm.findBTS(measurements)).willReturn(bestBts.name());
+        given(connectionManager.getBTSByName(bestBts.name())).willReturn(bestBts);
 
         // when
         callsHandler.startCall(measurements);

@@ -5,9 +5,8 @@ import com.nokia.uwr.service.callshandler.CallsHandler;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controller for calls.
@@ -26,8 +25,9 @@ public class CallsController {
     /**
      * @param measurements measured signal powers from BTS's for given UE.
      */
-    @PostMapping
-    public void startCall(Measurements measurements) {
+    @PostMapping("/start")
+    @ResponseStatus(HttpStatus.OK)
+    public void startCall(@RequestBody Measurements measurements) {
         LOGGER.info("Got request to start call with given measurements: " + measurements);
 
         callsHandler.startCall(measurements);

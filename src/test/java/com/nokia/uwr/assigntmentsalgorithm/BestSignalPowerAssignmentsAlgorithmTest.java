@@ -26,19 +26,18 @@ class BestSignalPowerAssignmentsAlgorithmTest {
                 "UE1",
                 new HashMap<>(
                         Map.ofEntries(
-                                Map.entry(new BTS("BTS1", 50), 25),
-                                Map.entry(new BTS("BTS2", 60), 15),
-                                Map.entry(new BTS("BTS3", 10), 8),
-                                Map.entry(new BTS("BTS4", 20), 6),
-                                Map.entry(new BTS("BTS5", 30), 29)
+                                Map.entry("BTS1", 25),
+                                Map.entry("BTS2", 15),
+                                Map.entry("BTS3", 8),
+                                Map.entry("BTS4", 6),
+                                Map.entry("BestBTS", 29)
                         )));
 
         // when
-        BTS result = assignmentsAlgorithm.findBTS(measurements);
+        String result = assignmentsAlgorithm.findBTS(measurements);
 
         // then
-        assertEquals(result.name(), "BTS5");
-        assertEquals(result.signalPower(), 30);
+        assertEquals(result, "BestBTS");
     }
 
 }

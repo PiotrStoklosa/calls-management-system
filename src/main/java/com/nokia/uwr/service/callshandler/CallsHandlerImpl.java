@@ -26,7 +26,8 @@ public class CallsHandlerImpl implements CallsHandler {
         if (measurements.signals().isEmpty())
             throw new EmptyMeasurementsMapException(measurements.name());
 
-        BTS connectToBts = assignmentsAlgorithm.findBTS(measurements);
+        String btsName = assignmentsAlgorithm.findBTS(measurements);
+        BTS connectToBts = connectionManager.getBTSByName(btsName);
 
         UEMeasurement ueMeasurement = new UEMeasurement(connectToBts, measurements);
         connectionManager.assignUE(connectToBts, ueMeasurement);

@@ -12,7 +12,7 @@ public record UEMeasurement(String name, int measuredSignalPower) {
      * @param measurements   measured signal powers to BTS's from given UE.
      */
     public UEMeasurement(BTS btsConnectedTo, Measurements measurements) {
-        this(measurements.name(), measurements.signals().get(btsConnectedTo));
+        this(measurements.name(), measurements.signals().get(btsConnectedTo.name()));
     }
 
 }

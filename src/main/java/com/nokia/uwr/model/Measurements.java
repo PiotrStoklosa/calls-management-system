@@ -7,5 +7,5 @@ import java.util.Map;
  * @param signals measured signals from BTS's
  * @author MiSobecki
  */
-public record Measurements(String name, Map<BTS, Integer> signals) {
+public record Measurements(String name, Map<String, Integer> signals) {
 }
