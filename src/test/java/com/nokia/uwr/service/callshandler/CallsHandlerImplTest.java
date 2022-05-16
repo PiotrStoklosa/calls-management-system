@@ -67,6 +67,7 @@ class CallsHandlerImplTest {
 
         //then
         verify(assignmentsAlgorithm).findBTS(measurements);
+        verify(connectionManager).getBTSByName(bestBts.name());
         verify(connectionManager).assignUE(bestBts, ueMeasurement);
     }
 
