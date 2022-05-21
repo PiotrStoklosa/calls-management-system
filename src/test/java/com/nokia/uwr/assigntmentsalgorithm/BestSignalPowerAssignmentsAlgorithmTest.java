@@ -1,7 +1,7 @@
 package com.nokia.uwr.assigntmentsalgorithm;
 
 import com.nokia.uwr.model.Measurements;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BestSignalPowerAssignmentsAlgorithmTest {
 
-    private AssignmentsAlgorithm assignmentsAlgorithm;
+    private static AssignmentsAlgorithm assignmentsAlgorithm;
 
-    @BeforeEach
-    public void setup() {
+    @BeforeAll
+    static void setup() {
         assignmentsAlgorithm = new BestSignalPowerAssignmentsAlgorithm();
     }
 

@@ -4,8 +4,9 @@ import com.nokia.uwr.connectionmanager.ConnectionManager;
 import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.UEMeasurement;
 import com.nokia.uwr.service.callsysinitializer.assignmentsmap.AssignmentsMapFactory;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,20 +15,21 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
 
 class CallSysInitializerImplTest {
 
-    private ConnectionManager connectionManager;
-    private AssignmentsMapFactory assignmentsMapFactory;
-    private CallSysInitializer callSysInitializer;
-    private List<BTS> btsList;
-    private Map<BTS, List<UEMeasurement>> givenAssignments;
+    @Mock
+    private static ConnectionManager connectionManager;
+    @Mock
+    private static AssignmentsMapFactory assignmentsMapFactory;
+    private static CallSysInitializer callSysInitializer;
+    private static List<BTS> btsList;
+    private static Map<BTS, List<UEMeasurement>> givenAssignments;
 
-    @BeforeEach
-    public void setup() {
-        connectionManager = mock(ConnectionManager.class);
-        assignmentsMapFactory = mock(AssignmentsMapFactory.class);
+    @BeforeAll
+    static void setup() {
         callSysInitializer = spy(new CallSysInitializerImpl(connectionManager, assignmentsMapFactory));
 
         BTS bts1 = new BTS("BTS1", 50);
