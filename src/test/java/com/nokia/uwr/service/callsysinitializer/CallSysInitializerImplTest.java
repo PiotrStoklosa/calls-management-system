@@ -32,10 +32,9 @@ class CallSysInitializerImplTest {
 
         BTS bts1 = new BTS("BTS1", 50);
         BTS bts2 = new BTS("BTS2", 30);
-        btsList = new ArrayList<>(
-                List.of(
-                        bts1,
-                        bts2));
+        btsList = List.of(
+                bts1,
+                bts2);
 
         givenAssignments = new HashMap<>(
                 Map.ofEntries(

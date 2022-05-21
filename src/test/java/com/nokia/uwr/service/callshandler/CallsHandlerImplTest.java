@@ -36,14 +36,13 @@ class CallsHandlerImplTest {
 
         measurements = new Measurements(
                 "UE1",
-                new HashMap<>(
-                        Map.ofEntries(
-                                Map.entry("BTS1", 25),
-                                Map.entry("BTS2", 15),
-                                Map.entry("BTS3", 8),
-                                Map.entry("BTS4", 6),
-                                Map.entry(bestBts.name(), 29)
-                        )));
+                Map.ofEntries(
+                        Map.entry("BTS1", 25),
+                        Map.entry("BTS2", 15),
+                        Map.entry("BTS3", 8),
+                        Map.entry("BTS4", 6),
+                        Map.entry(bestBts.name(), 29)
+                ));
     }
 
     @Test
