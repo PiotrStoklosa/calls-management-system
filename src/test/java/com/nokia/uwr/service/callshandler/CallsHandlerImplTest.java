@@ -7,9 +7,10 @@ import com.nokia.uwr.model.Measurements;
 import com.nokia.uwr.model.UEMeasurement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,15 +19,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
+@ExtendWith(MockitoExtension.class)
 class CallsHandlerImplTest {
 
     @Mock
     private ConnectionManager connectionManager;
     @Mock
     private AssignmentsAlgorithm assignmentsAlgorithm;
-    @Spy
     @InjectMocks
-    private CallsHandler callsHandler;
+    private CallsHandlerImpl callsHandler;
 
     private static Measurements measurements;
 
