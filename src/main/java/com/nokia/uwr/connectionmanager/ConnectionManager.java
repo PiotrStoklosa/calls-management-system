@@ -10,6 +10,7 @@ import java.util.Map;
  * Stores information about UE's assignments to BTS's.
  *
  * @author MiSobecki
+ * @author Barbara Moczulska
  */
 public interface ConnectionManager {
 
@@ -18,6 +19,7 @@ public interface ConnectionManager {
      *
      * @param bts           BTS to assign UE to.
      * @param ueMeasurement UE to be assigned with its measured signal power to given BTS.
+     * @author MiSobecki
      */
     void assignUE(BTS bts, UEMeasurement ueMeasurement);
 
@@ -25,11 +27,14 @@ public interface ConnectionManager {
      * Setter for assignments.
      *
      * @param assignments map of UE's assignments to BTS's.
+     * @author MiSobecki
      */
     void setAssignments(Map<BTS, List<UEMeasurement>> assignments);
 
     /**
      * Getter for assignments.
+     *
+     * @author MiSobecki
      */
     Map<BTS, List<UEMeasurement>> getAssignments();
 
@@ -38,7 +43,15 @@ public interface ConnectionManager {
      *
      * @param name name of the BTS.
      * @return BTS object.
+     * @author MiSobecki
      */
     BTS getBTSByName(String name);
 
+    /**
+     * Ends the connection for UE.
+     *
+     * @param ueName name of the UE.
+     * @author Barbara Moczulska
+     */
+    void endConnection(String ueName);
 }

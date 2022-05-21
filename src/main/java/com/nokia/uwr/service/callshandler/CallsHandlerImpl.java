@@ -34,4 +34,19 @@ public class CallsHandlerImpl implements CallsHandler {
 
         LOGGER.info("Started call for UE successfully");
     }
+
+    @Override
+    public void stopCall(String ueName) {
+        LOGGER.info("Stop call for UE: " + ueName);
+
+        if (ueName.isEmpty())
+        {
+            LOGGER.error("UE name is empty");
+            throw new IllegalArgumentException("UE name is empty");
+        }
+
+        connectionManager.endConnection(ueName);
+
+        LOGGER.info("Stop call for UE successfully");
+    }
 }

@@ -35,6 +35,20 @@ class ConnectionManagerImplTest {
     }
 
     @Test
+    public void shouldRemoveUEConnection(){
+        // given
+        String ueName = "UE1";
+
+        // when
+        connectionManager.endConnection(ueName);
+
+        // then
+        System.out.println(connectionManager.getAssignments());
+        //assert(connectionManager.getAssignments(), );
+
+    }
+
+    @Test
     public void shouldReturnBTSObjectWithGivenName() {
         // given
         String btsName = "BTS1";
