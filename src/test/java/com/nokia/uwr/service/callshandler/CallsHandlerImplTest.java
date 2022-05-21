@@ -7,23 +7,26 @@ import com.nokia.uwr.model.Measurements;
 import com.nokia.uwr.model.UEMeasurement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
 class CallsHandlerImplTest {
 
-    private static CallsHandler callsHandler;
     @Mock
-    private static ConnectionManager connectionManager;
+    private ConnectionManager connectionManager;
     @Mock
-    private static AssignmentsAlgorithm assignmentsAlgorithm;
+    private AssignmentsAlgorithm assignmentsAlgorithm;
+    @Spy
+    @InjectMocks
+    private CallsHandler callsHandler;
 
     private static Measurements measurements;
 
@@ -31,8 +34,6 @@ class CallsHandlerImplTest {
 
     @BeforeAll
     static void setup() {
-        callsHandler = spy(new CallsHandlerImpl(connectionManager, assignmentsAlgorithm));
-
         bestBts = new BTS("BTS5", 70);
 
         measurements = new Measurements(

@@ -6,7 +6,9 @@ import com.nokia.uwr.model.UEMeasurement;
 import com.nokia.uwr.service.callsysinitializer.assignmentsmap.AssignmentsMapFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,23 +17,22 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
 class CallSysInitializerImplTest {
 
     @Mock
-    private static ConnectionManager connectionManager;
+    private ConnectionManager connectionManager;
     @Mock
-    private static AssignmentsMapFactory assignmentsMapFactory;
-    private static CallSysInitializer callSysInitializer;
+    private AssignmentsMapFactory assignmentsMapFactory;
+    @Spy
+    @InjectMocks
+    private CallSysInitializer callSysInitializer;
     private static List<BTS> btsList;
     private static Map<BTS, List<UEMeasurement>> givenAssignments;
 
     @BeforeAll
     static void setup() {
-        callSysInitializer = spy(new CallSysInitializerImpl(connectionManager, assignmentsMapFactory));
-
         BTS bts1 = new BTS("BTS1", 50);
         BTS bts2 = new BTS("BTS2", 30);
         btsList = List.of(
