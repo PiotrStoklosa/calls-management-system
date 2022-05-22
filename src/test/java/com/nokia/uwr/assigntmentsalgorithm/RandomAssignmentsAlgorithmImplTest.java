@@ -2,22 +2,24 @@ package com.nokia.uwr.assigntmentsalgorithm;
 
 import com.nokia.uwr.model.Measurements;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.util.Map;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class RandomAssignmentsAlgorithmImplTest {
 
     private static AssignmentsAlgorithm assignmentsAlgorithm;
 
-    @BeforeEach
-    void setup(){
+    @BeforeAll
+    void setup() {
         assignmentsAlgorithm = new RandomAssignmentsAlgorithmImpl();
     }
 
     @Test
-    void shouldReturnRandomBtsThatIsInTheMap(){
+    void shouldReturnRandomBtsThatIsInTheMap() {
 
         Measurements measurements = new Measurements(
                 "UE1",
