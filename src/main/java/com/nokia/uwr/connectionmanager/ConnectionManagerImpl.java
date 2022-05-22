@@ -52,4 +52,14 @@ public class ConnectionManagerImpl implements ConnectionManager {
 
         return foundBTS;
     }
+
+    @Override
+    public void endConnection(String ueName) {
+        LOGGER.info("Ending connection for UE with given name: " + ueName);
+
+        assignments.forEach(((bts, ueMeasurements) -> ueMeasurements.removeIf(ue -> ue.name().equals(ueName))));
+        LOGGER.info("Removed assign UE:" + ueName);
+
+        LOGGER.info("Ending connection successfully");
+    }
 }

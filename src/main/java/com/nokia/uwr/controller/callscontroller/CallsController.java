@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * Controller for calls.
  *
  * @author MiSobecki
+ * @author Barbara Moczulska
  */
 @RestController
 @RequestMapping("/api/calls")
@@ -26,6 +27,7 @@ public class CallsController {
      * Starts call for given UE.
      *
      * @param measurements measured signal powers from BTS's for given UE.
+     * @author MiSobecki
      */
     @PostMapping("/start")
     @ResponseStatus(HttpStatus.OK)
@@ -35,6 +37,22 @@ public class CallsController {
         callsHandler.startCall(measurements);
 
         LOGGER.info("Started call correctly");
+    }
+
+    /**
+     * Stop call for given UE.
+     *
+     * @param measurements measured signal powers from BTS's for given UE.
+     * @author Barbara Moczulska
+     */
+    @PostMapping("/stop")
+    @ResponseStatus(HttpStatus.OK)
+    public void stopCall(@RequestBody Measurements measurements) {
+        LOGGER.info("Got request to stop call with given measurements: " + measurements);
+
+        callsHandler.stopCall(measurements.name());
+
+        LOGGER.info("Stopped call correctly");
     }
 
 }

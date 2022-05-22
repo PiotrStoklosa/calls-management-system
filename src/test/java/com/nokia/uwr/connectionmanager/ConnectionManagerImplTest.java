@@ -35,6 +35,25 @@ class ConnectionManagerImplTest {
     }
 
     @Test
+    public void shouldRemoveUEConnection(){
+        // given
+        String ueName = "UE1";
+        Map<BTS, List<UEMeasurement>> assignmentsResult = new HashMap<>(
+                Map.ofEntries(
+                        Map.entry(
+                                new BTS("BTS1", 50),
+                                new ArrayList<>())
+                ));
+
+        // when
+        connectionManager.endConnection(ueName);
+
+        // then
+        assertEquals(connectionManager.getAssignments(), assignmentsResult);
+
+    }
+
+    @Test
     public void shouldReturnBTSObjectWithGivenName() {
         // given
         String btsName = "BTS1";
