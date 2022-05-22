@@ -1,11 +1,9 @@
-package com.nokia.uwr.callsysinitializer;
+package com.nokia.uwr.service.callsysinitializer.assignmentsmap;
 
-import com.nokia.uwr.connectionmanager.ConnectionManager;
 import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.UEMeasurement;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,16 +12,17 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
-class CallSysInitializerImplTest {
+class AssignmentsMapFactoryImplTest {
 
-    @Autowired
-    private CallSysInitializer callSysInitializer;
-    @Autowired
-    private ConnectionManager connectionManager;
+    private static AssignmentsMapFactory assignmentsMapFactory;
+
+    @BeforeAll
+    static void setup() {
+        assignmentsMapFactory = new AssignmentsMapFactoryImpl();
+    }
 
     @Test
-    public void shouldInitializeAssignmentsMapAndSetInConnectionManager() {
+    public void shouldCreateAssignmentsMapCorrectly() {
         // given
         BTS bts1 = new BTS("BTS1", 50);
         BTS bts2 = new BTS("BTS2", 30);
@@ -39,12 +38,10 @@ class CallSysInitializerImplTest {
                 ));
 
         // when
-        callSysInitializer.initializeAssignments(btsList);
-
-        Map<BTS, List<UEMeasurement>> resultAssignments = connectionManager.getAssignments();
+        Map<BTS, List<UEMeasurement>> result = assignmentsMapFactory.createAssignmentsMap(btsList);
 
         // then
-        assertEquals(givenAssignments, resultAssignments);
+        assertEquals(result, givenAssignments);
     }
 
 }

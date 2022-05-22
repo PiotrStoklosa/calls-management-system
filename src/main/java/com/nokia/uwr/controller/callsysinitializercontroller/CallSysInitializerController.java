@@ -1,13 +1,14 @@
 package com.nokia.uwr.controller.callsysinitializercontroller;
 
-import com.nokia.uwr.callsysinitializer.CallSysInitializer;
-import com.nokia.uwr.callsysinitializer.EmptyBTSListException;
 import com.nokia.uwr.model.BTS;
+import com.nokia.uwr.service.callsysinitializer.CallSysInitializer;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -25,10 +26,11 @@ public class CallSysInitializerController {
     private final CallSysInitializer callSysInitializer;
 
     /**
+     * Initializes CallSys.
+     *
      * @param btsList list of BTS's to initialize assignments from.
      */
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public void initialize(@RequestBody List<BTS> btsList) {
         LOGGER.info("Got request to initialize from btsList: " + btsList);
 

@@ -14,6 +14,14 @@ import java.util.Map;
 public interface ConnectionManager {
 
     /**
+     * Assigns UE to given BTS.
+     *
+     * @param bts           BTS to assign UE to.
+     * @param ueMeasurement UE to be assigned with its measured signal power to given BTS.
+     */
+    void assignUE(BTS bts, UEMeasurement ueMeasurement);
+
+    /**
      * Setter for assignments.
      *
      * @param assignments map of UE's assignments to BTS's.
@@ -24,5 +32,13 @@ public interface ConnectionManager {
      * Getter for assignments.
      */
     Map<BTS, List<UEMeasurement>> getAssignments();
+
+    /**
+     * Searches for BTS with given name.
+     *
+     * @param name name of the BTS.
+     * @return BTS object.
+     */
+    BTS getBTSByName(String name);
 
 }
