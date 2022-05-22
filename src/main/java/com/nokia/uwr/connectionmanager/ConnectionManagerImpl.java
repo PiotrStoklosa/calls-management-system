@@ -59,6 +59,8 @@ public class ConnectionManagerImpl implements ConnectionManager {
 
         //assignments.forEach((bts, ueList) -> ueList.forEach(ue -> ueList.removeIf(i -> (i.name().equals(ueName)))));
 
+        assignments.forEach(((bts, ueMeasurements) -> ueMeasurements.removeIf(ue -> ue.name().equals(ueName))));
+
         LOGGER.info("Ending connection successfully");
     }
 }
