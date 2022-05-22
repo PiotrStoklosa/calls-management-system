@@ -2,7 +2,7 @@ package com.nokia.uwr.service.callsysinitializer.assignmentsmap;
 
 import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.UEMeasurement;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -14,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AssignmentsMapFactoryImplTest {
 
-    private AssignmentsMapFactory assignmentsMapFactory;
+    private static AssignmentsMapFactory assignmentsMapFactory;
 
-    @BeforeEach
-    public void setup() {
+    @BeforeAll
+    static void setup() {
         assignmentsMapFactory = new AssignmentsMapFactoryImpl();
     }
 

@@ -2,7 +2,7 @@ package com.nokia.uwr.connectionmanager;
 
 import com.nokia.uwr.model.BTS;
 import com.nokia.uwr.model.UEMeasurement;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -15,11 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ConnectionManagerImplTest {
 
-    private ConnectionManager connectionManager;
-    private BTS expectedBTS;
+    private static ConnectionManager connectionManager;
+    private static BTS expectedBTS;
 
-    @BeforeEach
-    public void setup() {
+    @BeforeAll
+    static void setup() {
         connectionManager = new ConnectionManagerImpl();
 
         expectedBTS = new BTS("BTS1", 50);

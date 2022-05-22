@@ -23,8 +23,9 @@ public class CallsHandlerImpl implements CallsHandler {
     public void startCall(Measurements measurements) {
         LOGGER.info("Start call for UE: " + measurements.name());
 
-        if (measurements.signals().isEmpty())
+        if (measurements.signals().isEmpty()) {
             throw new EmptyMeasurementsMapException(measurements.name());
+        }
 
         String btsName = assignmentsAlgorithm.findBTS(measurements);
         BTS connectToBts = connectionManager.getBTSByName(btsName);
