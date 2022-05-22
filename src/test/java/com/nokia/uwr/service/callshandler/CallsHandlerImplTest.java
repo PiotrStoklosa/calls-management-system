@@ -58,6 +58,15 @@ class CallsHandlerImplTest {
     }
 
     @Test
+    public void shouldThrowIllegalArgumentExceptionWhileGivenEmptyUENameAsParameter() {
+        // given
+        String name = "";
+
+        // when && then
+        assertThrows(IllegalArgumentException.class, () -> callsHandler.stopCall(name));
+    }
+
+    @Test
     public void shouldFindBestBtsToConnectToAndAssignUEToIt() {
         // given
         UEMeasurement ueMeasurement = new UEMeasurement("UE1", 29);
