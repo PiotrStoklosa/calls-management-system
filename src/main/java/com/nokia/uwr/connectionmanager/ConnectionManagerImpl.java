@@ -26,6 +26,19 @@ public class ConnectionManagerImpl implements ConnectionManager {
         LOGGER.info("Assigned UE successfully");
     }
 
+    @Override
+    public void reassignUE(BTS bts, UEMeasurement ueMeasurement) {
+        LOGGER.info("Reassign UE: " + ueMeasurement.name() + " to BTS: " + bts.name());
+
+        assignments.forEach((
+                (b, ueMeasurements) -> ueMeasurements.removeIf(
+                        ue -> ue.name().equals(ueMeasurement.name()))));
+
+        assignments.get(bts).add(ueMeasurement);
+
+        LOGGER.info("Reassigned UE successfully");
+    }
+
     public void setAssignments(Map<BTS, List<UEMeasurement>> assignments) {
         LOGGER.info("Set assignments: " + assignments);
 

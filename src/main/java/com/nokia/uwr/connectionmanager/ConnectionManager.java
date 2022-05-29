@@ -24,6 +24,15 @@ public interface ConnectionManager {
     void assignUE(BTS bts, UEMeasurement ueMeasurement);
 
     /**
+     * Reassigns UE to given BTS.
+     *
+     * @param bts           BTS to assign UE to.
+     * @param ueMeasurement UE to be assigned with its measured signal power to given BTS.
+     * @author MiSobecki
+     */
+    void reassignUE(BTS bts, UEMeasurement ueMeasurement);
+
+    /**
      * Setter for assignments.
      *
      * @param assignments map of UE's assignments to BTS's.
