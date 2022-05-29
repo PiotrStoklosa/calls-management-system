@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Random;
 
 @Component
-@Order(value = 2)
 public class RandomAssignmentsAlgorithmImpl implements AssignmentsAlgorithm {
 
     private static final Logger LOGGER = LogManager.getLogger(RandomAssignmentsAlgorithmImpl.class);
