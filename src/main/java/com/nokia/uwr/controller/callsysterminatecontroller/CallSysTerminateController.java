@@ -1,6 +1,5 @@
 package com.nokia.uwr.controller.callsysterminatecontroller;
 
-import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/terminate")
-@RequiredArgsConstructor
 public class CallSysTerminateController {
     private static final Logger LOGGER = LogManager.getLogger(CallSysTerminateController.class);
 
