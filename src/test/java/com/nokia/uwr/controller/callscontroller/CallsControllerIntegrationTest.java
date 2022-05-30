@@ -19,6 +19,7 @@ class CallsControllerIntegrationTest {
     private static final String START_CALL_URL = "/api/calls/start";
     private static final String MOVE_CALL_URL = "/api/calls/move";
     private static final String STOP_CALL_URL = "/api/calls/stop";
+    private static final String TERMINATE_URL = "/api/terminate";
 
     private static final String BTS_LIST = """
             [   {
@@ -213,6 +214,35 @@ class CallsControllerIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(MEASUREMENT_WITH_NON_EXISTING_BEST_BTS))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DisplayName("Call startCall method which should not throw exception while given measurements aren't empty" +
+            "and CallSys is initialized" +
+            "and call stopCall method" +
+            "and CallSys is terminated")
+    public void test8() throws Exception {
+        restBTSMockMvc
+                .perform(post(INITIALIZE_URL)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(BTS_LIST))
+                .andExpect(status().isOk());
+
+        restBTSMockMvc
+                .perform(post(START_CALL_URL)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(MEASUREMENTS))
+                .andExpect(status().isOk());
+
+        restBTSMockMvc
+                .perform(post(STOP_CALL_URL)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(MEASUREMENTS))
+                .andExpect(status().isOk());
+
+        restBTSMockMvc
+                .perform(post(TERMINATE_URL))
+                    .andExpect(status().isOk());
     }
 
 }
