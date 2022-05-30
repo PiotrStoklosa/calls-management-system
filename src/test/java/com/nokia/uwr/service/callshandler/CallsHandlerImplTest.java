@@ -49,12 +49,21 @@ class CallsHandlerImplTest {
     }
 
     @Test
-    public void shouldThrowEmptyMeasurementsMapExceptionWhileGivenEmptyMapAsParameter() {
+    public void shouldThrowEmptyMeasurementsMapExceptionWhileGivenEmptyMapAsParameterInStartCall() {
         // given
         Measurements emptyMeasurements = new Measurements("UE1", new HashMap<>());
 
         // when && then
         assertThrows(EmptyMeasurementsMapException.class, () -> callsHandler.startCall(emptyMeasurements));
+    }
+
+    @Test
+    public void shouldThrowEmptyMeasurementsMapExceptionWhileGivenEmptyMapAsParameterInMoveCall() {
+        // given
+        Measurements emptyMeasurements = new Measurements("UE1", new HashMap<>());
+
+        // when && then
+        assertThrows(EmptyMeasurementsMapException.class, () -> callsHandler.moveCall(emptyMeasurements));
     }
 
     @Test
@@ -80,6 +89,22 @@ class CallsHandlerImplTest {
         verify(assignmentsAlgorithm).findBTS(measurements);
         verify(connectionManager).getBTSByName(bestBts.name());
         verify(connectionManager).assignUE(bestBts, ueMeasurement);
+    }
+
+    @Test
+    public void shouldFindBestBtsToConnectToAndReassignUEToIt() {
+        // given
+        UEMeasurement ueMeasurement = new UEMeasurement("UE1", 29);
+        given(assignmentsAlgorithm.findBTS(measurements)).willReturn(bestBts.name());
+        given(connectionManager.getBTSByName(bestBts.name())).willReturn(bestBts);
+
+        // when
+        callsHandler.moveCall(measurements);
+
+        //then
+        verify(assignmentsAlgorithm).findBTS(measurements);
+        verify(connectionManager).getBTSByName(bestBts.name());
+        verify(connectionManager).reassignUE(bestBts, ueMeasurement);
     }
 
 }

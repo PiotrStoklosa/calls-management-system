@@ -40,6 +40,22 @@ public class CallsController {
     }
 
     /**
+     * Move call for given UE.
+     *
+     * @param measurements measured signal powers from BTS's for given UE.
+     * @author MiSobecki
+     */
+    @PostMapping("/move")
+    @ResponseStatus(HttpStatus.OK)
+    public void moveCall(@RequestBody Measurements measurements) {
+        LOGGER.info("Got request to move call with given measurements: " + measurements);
+
+        callsHandler.moveCall(measurements);
+
+        LOGGER.info("Done move call correctly");
+    }
+
+    /**
      * Stop call for given UE.
      *
      * @param measurements measured signal powers from BTS's for given UE.

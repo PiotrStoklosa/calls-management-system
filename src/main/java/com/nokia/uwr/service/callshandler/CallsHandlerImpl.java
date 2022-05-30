@@ -37,11 +37,27 @@ public class CallsHandlerImpl implements CallsHandler {
     }
 
     @Override
+    public void moveCall(Measurements measurements) {
+        LOGGER.info("Move call for UE: " + measurements.name());
+
+        if (measurements.signals().isEmpty()) {
+            throw new EmptyMeasurementsMapException(measurements.name());
+        }
+
+        String btsName = assignmentsAlgorithm.findBTS(measurements);
+        BTS connectToBts = connectionManager.getBTSByName(btsName);
+
+        UEMeasurement ueMeasurement = new UEMeasurement(connectToBts, measurements);
+        connectionManager.reassignUE(connectToBts, ueMeasurement);
+
+        LOGGER.info("Started call for UE successfully");
+    }
+
+    @Override
     public void stopCall(String ueName) {
         LOGGER.info("Stop call for UE: " + ueName);
 
-        if (ueName.isEmpty())
-        {
+        if (ueName.isEmpty()) {
             LOGGER.error("UE name is empty");
             throw new IllegalArgumentException("UE name is empty");
         }
