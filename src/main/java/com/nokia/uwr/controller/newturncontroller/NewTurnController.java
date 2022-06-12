@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/turns")
@@ -18,10 +20,10 @@ public class NewTurnController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public void newTurnSignal(@RequestBody int TurnNumber){
-        LOGGER.info("Got a request to start turn number:" + TurnNumber);
+    public void newTurnSignal(@RequestBody Map<String, Integer> turnNumber){
+        LOGGER.info("Got a request to start turn number:" + turnNumber.get("turnNumber"));
 
-        newTurnHandler.setNewTurn(TurnNumber);
+        newTurnHandler.setNewTurn(turnNumber.get("turnNumber"));
 
         LOGGER.info("New turn started correctly");
     }

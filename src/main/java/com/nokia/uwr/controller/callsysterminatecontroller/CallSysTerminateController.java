@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Barbara Moczulska
  */
 @RestController
-@RequestMapping("/api/terminate")
+@RequestMapping("/api/terminator")
 public class CallSysTerminateController {
     private static final Logger LOGGER = LogManager.getLogger(CallSysTerminateController.class);
 

@@ -18,8 +18,8 @@ class CallsControllerIntegrationTest {
     private static final String INITIALIZE_URL = "/api/initializer";
     private static final String START_CALL_URL = "/api/calls/start";
     private static final String MOVE_CALL_URL = "/api/calls/move";
-    private static final String STOP_CALL_URL = "/api/calls/stop";
-    private static final String TERMINATE_URL = "/api/terminate";
+    private static final String STOP_CALL_URL = "/api/calls/end";
+    private static final String TERMINATE_URL = "/api/terminator";
 
     private static final String BTS_LIST = """
             [   {

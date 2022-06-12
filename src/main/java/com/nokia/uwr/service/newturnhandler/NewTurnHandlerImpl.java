@@ -51,7 +51,7 @@ public class NewTurnHandlerImpl implements NewTurnHandler {
                 .map(UEMeasurement::measuredSignalPower)
                 .reduce(0, Integer::sum);
 
-        LOGGER.info("In " + turnNumber + " we have " + ueCnt + " UEs and their summed signal power is " + ueSum);
+        LOGGER.info("In turn " + turnNumber + " we have " + ueCnt + " UEs and their summed signal power is " + ueSum);
 
         LOGGER.info("Logged measurements for turn number  " + turnNumber + " successfully");
     }

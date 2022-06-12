@@ -61,7 +61,7 @@ public class CallsController {
      * @param measurements measured signal powers from BTS's for given UE.
      * @author Barbara Moczulska
      */
-    @PostMapping("/stop")
+    @PostMapping("/end")
     @ResponseStatus(HttpStatus.OK)
     public void stopCall(@RequestBody Measurements measurements) {
         LOGGER.info("Got request to stop call with given measurements: " + measurements);
