@@ -1,9 +1,9 @@
 # calls-management-system
 
 ## Hi!
-Calls managment system is an application that manages connections between BTSs and UEs.
+Calls management system is an application that manages connections between BTSs and UEs.
 
-## Project moduls
+## Project modules
 
 1. [network-simulator](https://github.com/PiotrStoklosa/network-simulator)
 
@@ -19,7 +19,7 @@ Calls managment system is an application that manages connections between BTSs a
 * [How to set up this app locally](#How-to-set-up-this-app-locally)
 * [How to run an app](#How-to-run-an-app)
 * [Instruction for users](#Instruction-for-users)
-* [Documantation for programmers](#Documantation-for-programmers)
+* [Documentation for programmers](#Documentation-for-programmers)
 
 ## How to set up this app locally
 
@@ -27,7 +27,7 @@ Calls managment system is an application that manages connections between BTSs a
 
 ## Instruction for users
 
-## Documantation for programmers
+## Documentation for programmers
 
 
 **Technologies:**
