@@ -22,8 +22,16 @@ Calls management system is an application that manages connections between BTSs 
 * [Documentation for programmers](#Documentation-for-programmers)
 
 ## How to set up this app locally
+### Docker
+1. Install JDK-17 and Gradle 7.4.2
+2. Install Docker. If you are using Windows you can download for instance Docker Desktop application available here: https://docs.docker.com/desktop/windows/install/
+3. Change directory to root of project
+4. Run ```gradle build```
+5. When gradle task is complete, run ```docker build --build-arg JAR_FILE=build/libs/\*.jar -t calls-management-system .```
 
 ## How to run an app
+1. Run ```docker run -p 8080:8080 calls-management-system```
+3. The application is now running and available at the http://localhost:8080
 
 ## Instruction for users
 
