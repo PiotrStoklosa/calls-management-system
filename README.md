@@ -24,7 +24,8 @@ Calls management system is an application that manages connections between BTSs 
 1. Install JDK-17 and Gradle 7.4.2 
 2. Install influxdb and run this database on port 8086.
 3. Generate token and paste it into properties file.
-4. Run calls-management-system.
+4. Run ```gradle build```
+5. Run calls-management-system.
 
 ## Instruction for users
 
