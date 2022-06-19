@@ -9,8 +9,11 @@ Calls management system is an application that manages connections between BTSs 
 
 2. [calls-management-system](https://github.com/PiotrStoklosa/calls-management-system)
 
-3. statistics-and-results-module
-InfluxDB included in this project.
+3. [statistics-and-results-report](https://hackmd.io/@yTKMIFmVQSuLpuxpJ1_ppQ/HJhTCzpF9) <br>
+  InfluxDB included in this project.<br>
+  Comparisons between two different implemetations of algorithm and conclusions (at now only in polish language).<br>
+
+
 
 ## Table of contents
 * [How to set up this app locally](#How-to-set-up-and-run-this-app-locally)
