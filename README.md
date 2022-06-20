@@ -26,6 +26,7 @@ Calls management system is an application that manages connections between BTSs 
 3. Generate token and paste it into properties file.
 4. Run ```gradle build```
 5. Run calls-management-system.
+6. Application is running on port 8080.
 
 ## Instruction for users
 
